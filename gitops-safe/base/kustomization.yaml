@@ -9,17 +9,10 @@ metadata:
 # Start with core infrastructure, then add dependent resources
 resources:
 - configmap.yaml
-- pvc.yaml
-- postgres-init.yaml
-- security-contexts.yaml
-- redis-deployment.yaml
-- redis-service.yaml
-- postgres-deployment.yaml
-- postgres-service.yaml
-- backend-deployment.yaml
-- backend-service.yaml
-- frontend-deployment.yaml
-- frontend-service.yaml
+- redis.yaml
+- postgres.yaml
+- backend.yaml
+- frontend.yaml
 
 # We'll add these in order to avoid dependency issues:
 # 1. ✅ Core infrastructure (Redis, Postgres) ← COMPLETED

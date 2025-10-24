@@ -9,7 +9,7 @@ metadata:
 # It just tracks what's different between Git and your cluster
 
 # Reference the base configuration
-bases:
+resources:
 - ../../base
 
 # Resources to monitor (starting with safe ConfigMap)
@@ -17,7 +17,7 @@ bases:
 resources: []
 
 # Common labels for tracking
-commonLabels:
+labels:
   app.kubernetes.io/name: humor-game
   app.kubernetes.io/instance: dev
   app.kubernetes.io/part-of: gitops-demo
@@ -25,7 +25,7 @@ commonLabels:
 
 # Common annotations for tracking
 commonAnnotations:
-  argocd.argoproj.io/tracking-id: humor-game-monitor:/kustomization.yaml
+  argocd.argoproj.io/tracking-id: humor-monitor:/kustomization.yaml
   gitops.argoproj.io/description: "Safe GitOps monitoring for Humor Game"
 
 # No patches or transformations for now
