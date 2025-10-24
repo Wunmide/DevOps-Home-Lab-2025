@@ -168,8 +168,13 @@ spec:
       labels:
         app: postgres
     spec:
+      terminationGracePeriodSeconds: 60   # make postgres stable by giving it time to shutdown gracaefully with <--- and prestop 2bee
       containers:
         - name: postgres
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sh","-c","pg_ctl -D $PGDATA -m fast stop || true; sleep 10"]
           image: postgres:15-alpine
           imagePullPolicy: Always
           ports:
