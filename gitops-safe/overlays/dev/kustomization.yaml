@@ -25,9 +25,9 @@ labels:
       app.kubernetes.io/managed-by: argocd
 
 # Common annotations for tracking
-annotations:
-  argocd.argoproj.io/tracking-id: humor-monitor:/kustomization.yaml
-  gitops.argoproj.io/description: "Safe GitOps monitoring for Humor Game"
+commonAnnotations:
+   argocd.argoproj.io/tracking-id: humor-monitor:/kustomization.yaml
+   gitops.argoproj.io/description: "Safe GitOps monitoring for Humor Game"
 
 # No patches or transformations for now
 # This ensures your working app stays exactly as is

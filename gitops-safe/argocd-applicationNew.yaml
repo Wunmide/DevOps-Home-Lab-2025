@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: humor-game-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Wunmide/DevOps-Home-Lab-2025.git
+    path: gitops-safe/overlays/dev            # your app path
+    targetRevision: main
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: humor-game
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+# Ignore differences that don't matter
+  ignoreDifferences:
+  - group: apps
+    kind: Deployment
+    jsonPointers:
+    - /spec/template/metadata/annotations/deployment.kubernetes.io~1revision
+  - group: ''
+    kind: Service
+    jsonPointers:
+    - /spec/clusterIP
+    - /spec/clusterIPs
+  - group: autoscaling
+    kind: HorizontalPodAutoscaler
+    jsonPointers:
+    - /status
+  
+  # Revision history limit
+  revisionHistoryLimit: 10
