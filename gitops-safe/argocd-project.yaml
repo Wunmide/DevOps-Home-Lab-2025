@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: humor-game-safe
+  name: humor-game-2b
   namespace: argocd
 spec:
   description: Safe GitOps monitoring for Humor Game (read-only initially)
