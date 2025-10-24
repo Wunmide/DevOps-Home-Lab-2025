@@ -4,7 +4,7 @@ metadata:
   name: humor-game-app
   namespace: argocd
 spec:
-  project: humor-game-2b
+  project: default
   source:
     repoURL: https://github.com/Wunmide/DevOps-Home-Lab-2025.git
     path: gitops-safe/overlays/dev            # your app path
